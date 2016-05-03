@@ -39,11 +39,11 @@ def main():
         value = value_td.text
         if value == '\xA0':
             continue
-        value = float(value.replace(',', '.'))
+        value = float(value.replace(',', '.')) / 100
         data[year] = value
     with open(path, 'wt', encoding='ASCII') as file:
         for year, value in sorted(data.items()):
-            print('{y:4}\t{v:.1f}'.format(y=year, v=value), file=file)
+            print('{y:4}\t{v:.3f}'.format(y=year, v=value), file=file)
 
 if __name__ == '__main__':
     main()
