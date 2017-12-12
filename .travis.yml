@@ -1,0 +1,19 @@
+dist: trusty
+sudo: false
+language: python
+python:
+- "3.2"
+- "3.3"
+- "3.4"
+- "3.5"
+- "3.6"
+- "3.7-dev"
+- pypy3
+install:
+- pip install lxml
+script:
+- python inflacja 4237 PLZ --from=1984 --to=2012
+- private/update-data
+- git diff --exit-code
+
+# vim:ts=2 sts=2 sw=2 et
