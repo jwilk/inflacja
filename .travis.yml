@@ -12,7 +12,7 @@ python:
 install:
 - if [[ $TRAVIS_PYTHON_VERSION != 3.2 ]]; then pip install lxml; fi
 script:
-- python inflacja 4237 PLZ --from=1984 --to=2012
+- ./inflacja 4237 PLZ --from=1984 --to=2012
 - if [[ $TRAVIS_PYTHON_VERSION != 3.2 ]]; then private/update-data; fi
 - git diff --exit-code
 
