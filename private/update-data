@@ -16,9 +16,9 @@ def main():
     doc = lxml.html.parse(url)
     [table] = doc.findall('//table[@class="tabelka-standard"]')
     data = {}
-    for year_td in table.findall('.//td/strong'):
+    for value_td in table.findall('.//td'):
+        [year_td] = value_td.xpath('./preceding-sibling::th[1]')
         year = int(year_td.text)
-        [value_td] = year_td.xpath('./parent::td/following-sibling::td[1]')
         value = value_td.text
         if value == '\xA0':
             continue
