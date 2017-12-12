@@ -8,7 +8,7 @@ import datetime
 import os
 
 here = os.path.dirname(__file__)
-data_path = path = '{here}/data'.format(here=here)
+data_path = path = os.path.join(here, 'data')
 
 units = {
     'PLZ': 1,
