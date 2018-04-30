@@ -4,16 +4,21 @@
 # SPDX-License-Identifier: MIT
 
 import os
+import ssl
 import urllib.request
 
 import lxml.html
 
+cafile = '/usr/share/ca-certificates/mozilla/Certum_Trusted_Network_CA.crt'
 url = 'https://stat.gov.pl/obszary-tematyczne/ceny-handel/wskazniki-cen/wskazniki-cen-towarow-i-uslug-konsumpcyjnych-pot-inflacja-/roczne-wskazniki-cen-towarow-i-uslug-konsumpcyjnych/'
 here = os.path.dirname(__file__)
 path = '{here}/../data'.format(here=here)
 
 def main():
-    with urllib.request.urlopen(url) as fp:
+    tls_context = None
+    if os.path.exists(cafile):
+        tls_context = ssl.create_default_context(cafile=cafile)
+    with urllib.request.urlopen(url, context=tls_context) as fp:
         doc = lxml.html.parse(fp)
     [table] = doc.findall('//table[@class="tabelka-standard"]')
     data = {}
