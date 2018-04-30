@@ -7,8 +7,7 @@ import os
 
 import lxml.html
 
-url = 'http://stat.gov.pl/obszary-tematyczne/ceny-handel/wskazniki-cen/wskazniki-cen-towarow-i-uslug-konsumpcyjnych-pot-inflacja-/roczne-wskazniki-cen-towarow-i-uslug-konsumpcyjnych-w-latach-1950-2014/'
-
+url = 'https://stat.gov.pl/obszary-tematyczne/ceny-handel/wskazniki-cen/wskazniki-cen-towarow-i-uslug-konsumpcyjnych-pot-inflacja-/roczne-wskazniki-cen-towarow-i-uslug-konsumpcyjnych/'
 here = os.path.dirname(__file__)
 path = '{here}/../data'.format(here=here)
 
