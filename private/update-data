@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: MIT
 
 import os
+import urllib.request
 
 import lxml.html
 
@@ -12,7 +13,8 @@ here = os.path.dirname(__file__)
 path = '{here}/../data'.format(here=here)
 
 def main():
-    doc = lxml.html.parse(url)
+    with urllib.request.urlopen(url) as fp:
+        doc = lxml.html.parse(fp)
     [table] = doc.findall('//table[@class="tabelka-standard"]')
     data = {}
     for value_td in table.findall('.//td'):
