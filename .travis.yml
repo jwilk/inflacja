@@ -12,10 +12,12 @@ python:
 before_install:
 - if [[ $TRAVIS_PYTHON_VERSION = 3.[23] ]]; then if_lxml=:; fi
 - if [[ $TRAVIS_PYTHON_VERSION = pypy* ]]; then if_lxml=:; fi
+- pyflakes=pyflakes
+- if [[ $TRAVIS_PYTHON_VERSION = 3.[23] ]]; then pyflakes='pyflakes<2'; fi
 - if [[ $TRAVIS_PYTHON_VERSION = 3.2 ]]; then if_pygments=:; fi
 install:
 - $if_lxml pip install lxml
-- pip install pydiatra pyflakes
+- pip install pydiatra $pyflakes
 - $if_pygments pip install restructuredtext-lint pygments
 script:
 - ./inflacja 4237 PLZ --from=1984 --to=2012
