@@ -11,9 +11,9 @@ import sys
 
 import lxml.html
 
-...  # Python >= 3.4 is required
-if sys.version_info < (3, 4):
-    raise RuntimeError('Python >= 3.4 is required')
+...  # Python >= 3.4.3 is required
+if sys.version_info < (3, 4, 3):
+    raise RuntimeError('Python >= 3.4.3 is required')
 
 cafile = '/usr/share/ca-certificates/mozilla/Certum_Trusted_Network_CA.crt'
 url = 'https://stat.gov.pl/obszary-tematyczne/ceny-handel/wskazniki-cen/wskazniki-cen-towarow-i-uslug-konsumpcyjnych-pot-inflacja-/roczne-wskazniki-cen-towarow-i-uslug-konsumpcyjnych/'
