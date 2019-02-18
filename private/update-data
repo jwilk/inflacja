@@ -26,11 +26,12 @@ def main():
         tls_context = ssl.create_default_context(cafile=cafile)
     with urllib.request.urlopen(url, context=tls_context) as fp:
         doc = lxml.html.parse(fp)
-    [table] = doc.findall('//table[@class="tabelka-standard"]')
+    [table] = doc.findall('//table[@class="tabelkaszara"]')
     data = {}
-    for value_td in table.findall('.//td'):
-        [year_td] = value_td.xpath('./preceding-sibling::th[1]')
-        year = int(year_td.text)
+    for year_elt in table.findall('.//td/strong'):
+        year_td = year_elt.getparent()
+        [value_td] = year_td.xpath('./following-sibling::td[1]')
+        year = int(year_elt.text)
         value = value_td.text
         if value == '\xA0':
             continue
