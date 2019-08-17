@@ -13,7 +13,7 @@ jobs:
   - python: "3.8-dev"
   - python: pypy3
 before_install:
-- if [[ $TRAVIS_PYTHON_VERSION = 3.[23] ]]; then if_lxml=:; fi
+- if [[ $TRAVIS_PYTHON_VERSION = 3.[234] ]]; then if_lxml=:; fi
 - if [[ $TRAVIS_PYTHON_VERSION = pypy* ]]; then if_lxml=:; fi
 - if [[ $TRAVIS_PYTHON_VERSION = *-dev ]]; then if_lxml=:; fi
 - pyflakes=pyflakes
