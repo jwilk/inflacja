@@ -9,7 +9,7 @@ import os
 
 this = os.path.realpath(__file__)
 here = os.path.dirname(this)
-data_path = path = os.path.join(here, 'data')
+data_path = os.path.join(here, 'data')
 
 units = {
     'PLZ': 1,
@@ -41,7 +41,7 @@ def main():
             # It's not worth the trouble.
             ap.error('years before 1951 are not supported')
     data = {}
-    with open(path, 'rt', encoding='ASCII') as file:
+    with open(data_path, 'rt', encoding='ASCII') as file:
         for line in file:
             year, value = line.split()
             year = int(year)
