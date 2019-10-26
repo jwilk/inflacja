@@ -10,6 +10,7 @@ import os
 this = os.path.realpath(__file__)
 here = os.path.dirname(this)
 data_path = os.path.join(here, 'data')
+del this, here
 
 units = {
     'PLZ': 1,
