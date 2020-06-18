@@ -4,6 +4,7 @@
 # Copyright © 2016-2019 Jakub Wilk <jwilk@jwilk.net>
 # SPDX-License-Identifier: MIT
 
+import argparse
 import os
 import ssl
 import sys
@@ -21,8 +22,16 @@ here = os.path.dirname(__file__)
 path = '{here}/../data'.format(here=here)
 
 def main():
-    tls_context = None
-    if os.path.exists(cafile):
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--no-check-certificate', action='store_true',
+        help="don't check the HTTPS server certificate"
+    )
+    options = ap.parse_args()
+    tls_context = ssl.create_default_context()
+    if options.no_check_certificate:
+        tls_context.check_hostname = False
+        tls_context.verify_mode = ssl.CERT_NONE
+    elif os.path.exists(cafile):
         tls_context = ssl.create_default_context(cafile=cafile)
     with urllib.request.urlopen(url, context=tls_context) as fp:
         doc = lxml.html.parse(fp)
