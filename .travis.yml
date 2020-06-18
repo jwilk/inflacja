@@ -25,7 +25,7 @@ install:
 - $if_pygments python3 -m pip install restructuredtext-lint pygments
 script:
 - prove -v
-- $if_lxml private/update-data
+- $if_lxml private/update-data --no-check-certificate
 - git diff --exit-code
 - python3 -m pydiatra .
 - python3 -m pyflakes .
