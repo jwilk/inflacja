@@ -6,8 +6,8 @@
 
 import os
 import ssl
-import urllib.request
 import sys
+import urllib.request
 
 import lxml.html
 
