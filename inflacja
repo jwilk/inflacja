@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright © 2016-2019 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2016-2021 Jakub Wilk <jwilk@jwilk.net>
 # SPDX-License-Identifier: MIT
 
 import argparse
