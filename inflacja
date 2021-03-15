@@ -25,10 +25,10 @@ def auto_unit(year):
     return 'PLN'
 
 def main():
-    this_year = datetime.date.today().year
+    prev_year = datetime.date.today().year - 1
     ap = argparse.ArgumentParser()
     ap.add_argument('--from', dest='yfrom', metavar='FROM-YEAR', type=int, required=True)
-    ap.add_argument('--to', dest='yto', metavar='TO-YEAR', type=int, default=this_year)
+    ap.add_argument('--to', dest='yto', metavar='TO-YEAR', type=int, default=prev_year)
     ap.add_argument('--unit', dest='uto', metavar='TO-UNIT', choices=unit_names)
     ap.add_argument('amount', metavar='AMOUNT', type=float)
     ap.add_argument('unit', metavar='UNIT', choices=unit_names, default=None, nargs='?')
@@ -48,7 +48,7 @@ def main():
             year = int(year)
             value = float(value)
             data[year] = value
-    ymax = max(data.keys()) + 1
+    ymax = max(data.keys())
     for y in {yfrom, yto}:
         if y > ymax:
             ap.error('years after {} are not supported'.format(ymax))
@@ -56,9 +56,9 @@ def main():
     unit = options.unit or auto_unit(yfrom)
     value *= units[unit]
     uto = options.uto or auto_unit(yto)
-    for y in range(yfrom, yto):
+    for y in range(yfrom + 1, yto + 1):
         value *= data[y]
-    for y in range(yto, yfrom):
+    for y in range(yto + 1, yfrom + 1):
         value /= data[y]
     value /= units[uto]
     print('{:.2f} {}'.format(value, uto))

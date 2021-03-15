@@ -7,7 +7,7 @@ set -e -u
 pdir="${0%/*}/.."
 prog="$pdir/inflacja"
 echo 1..1
-xout='441.79 PLN'
+xout='398.38 PLN'
 out=$("$prog" 4237 PLZ --from=1984 --to=2012)
 say() { printf "%s\n" "$@"; }
 diff=$(diff -u <(say "$xout") <(say "$out")) || true
