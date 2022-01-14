@@ -7,6 +7,8 @@ import argparse
 import datetime
 import os
 
+0_0  # Python >= 3.6 is required
+
 this = os.path.realpath(__file__)
 here = os.path.dirname(this)
 data_path = os.path.join(here, 'data')
