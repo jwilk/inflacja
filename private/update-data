@@ -16,7 +16,7 @@ import lxml.html
 cafile = '/usr/share/ca-certificates/mozilla/Certum_Trusted_Network_CA.crt'
 url = 'https://stat.gov.pl/obszary-tematyczne/ceny-handel/wskazniki-cen/wskazniki-cen-towarow-i-uslug-konsumpcyjnych-pot-inflacja-/roczne-wskazniki-cen-towarow-i-uslug-konsumpcyjnych/'
 here = os.path.dirname(__file__)
-path = '{here}/../data'.format(here=here)
+path = f'{here}/../data'
 
 def main():
     ap = argparse.ArgumentParser()
@@ -45,7 +45,7 @@ def main():
         data[year] = value
     with open(path, 'wt', encoding='ASCII') as file:
         for year, value in sorted(data.items()):
-            print('{y:4}\t{v:.3f}'.format(y=year, v=value), file=file)
+            print(f'{year:4}\t{value:.3f}', file=file)
 
 if __name__ == '__main__':
     main()

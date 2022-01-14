@@ -53,7 +53,7 @@ def main():
     ymax = max(data.keys())
     for y in {yfrom, yto}:
         if y > ymax:
-            ap.error('years after {} are not supported'.format(ymax))
+            ap.error(f'years after {ymax} are not supported')
     value = options.amount
     unit = options.unit or auto_unit(yfrom)
     value *= units[unit]
@@ -63,7 +63,7 @@ def main():
     for y in range(yto + 1, yfrom + 1):
         value /= data[y]
     value /= units[uto]
-    print('{:.2f} {}'.format(value, uto))
+    print(f'{value:.2f} {uto}')
 
 if __name__ == '__main__':
     main()
