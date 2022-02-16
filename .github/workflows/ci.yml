@@ -45,9 +45,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: set up APT
+      run: |
+        printf 'Apt::Install-Recommends "false";\n' | sudo tee -a /etc/apt/apt.conf
+        sudo apt-get update
     - name: install lxml
       run: |
-        sudo apt-get update
         sudo apt-get install -y python3-lxml
     - name: ensure data is up-to-date
       run: |
