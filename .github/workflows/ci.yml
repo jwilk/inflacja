@@ -37,7 +37,7 @@ jobs:
         python3 -m pydiatra -v .
     - name: run pyflakes
       run: |
-        pip install pyflakes
+        python3 -m pip install pyflakes
         python3 -m pyflakes .
     - name: check README syntax
       run: |
