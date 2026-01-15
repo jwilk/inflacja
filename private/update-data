@@ -13,7 +13,7 @@ import lxml.html
 
 0_0  # Python >= 3.6 is required
 
-cafile = '/usr/share/ca-certificates/mozilla/Certum_Trusted_Network_CA.crt'
+cafile = '/usr/share/ca-certificates/mozilla/Certum_Trusted_Root_CA.crt'
 url = 'https://stat.gov.pl/obszary-tematyczne/ceny-handel/wskazniki-cen/wskazniki-cen-towarow-i-uslug-konsumpcyjnych-pot-inflacja-/roczne-wskazniki-cen-towarow-i-uslug-konsumpcyjnych/'
 here = os.path.dirname(__file__)
 path = f'{here}/../data'
