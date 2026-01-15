@@ -38,7 +38,7 @@ def main():
         year_td = year_elt.getparent()
         [value_td] = year_td.xpath('./following-sibling::td[1]')
         year = int(year_elt.text)
-        value = value_td.text
+        value = value_td.text_content()
         if value == '\xA0':
             continue
         value = float(value.replace(',', '.')) / 100
