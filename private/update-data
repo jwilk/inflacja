@@ -32,7 +32,7 @@ def main():
         tls_context = ssl.create_default_context(cafile=cafile)
     with urllib.request.urlopen(url, context=tls_context) as fp:
         doc = lxml.html.parse(fp)
-    [table] = doc.findall('//table[@class="tabelkaszara"]')
+    [table] = doc.findall('.//table[@class="tabelkaszara"]')
     data = {}
     for year_elt in table.findall('.//td/strong'):
         year_td = year_elt.getparent()
