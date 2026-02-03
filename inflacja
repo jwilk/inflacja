@@ -30,6 +30,7 @@ def auto_unit(year):
 def main():
     prev_year = datetime.date.today().year - 1
     ap = argparse.ArgumentParser()
+    ap.color = False
     ap.add_argument('--from', dest='yfrom', metavar='FROM-YEAR', type=int, required=True)
     ap.add_argument('--to', dest='yto', metavar='TO-YEAR', type=int, default=prev_year)
     ap.add_argument('--unit', dest='uto', metavar='TO-UNIT', choices=unit_names)

@@ -20,6 +20,7 @@ path = f'{here}/../data'
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.color = False
     ap.add_argument('--no-check-certificate', action='store_true',
         help="don't check the HTTPS server certificate"
     )
